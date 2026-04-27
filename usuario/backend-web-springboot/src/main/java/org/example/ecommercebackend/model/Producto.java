@@ -1,24 +1,46 @@
 package org.example.ecommercebackend.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Producto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String nombre;
     private String marca;
-    private double precio;
-    private int descuento;
     private String categoria;
-    private boolean disponible;
-    private int stock;
+    private Double precio;
+    private Integer stock;
+    private String descripcion;
+    private String imagenUrl;
+    private Boolean destacado;
+    private Integer descuento;
+    private Boolean disponible;
 
-    public Producto(String nombre, String marca, double precio, int descuento,
-                    String categoria, boolean disponible, int stock) {
+    public Producto() {
+    }
+
+    public Producto(String nombre, String marca, String categoria,
+                    Double precio, Integer stock, String descripcion,
+                    String imagenUrl, Boolean destacado,
+                    Integer descuento, Boolean disponible) {
         this.nombre = nombre;
         this.marca = marca;
-        this.precio = precio;
-        this.descuento = descuento;
         this.categoria = categoria;
-        this.disponible = disponible;
+        this.precio = precio;
         this.stock = stock;
+        this.descripcion = descripcion;
+        this.imagenUrl = imagenUrl;
+        this.destacado = destacado;
+        this.descuento = descuento;
+        this.disponible = disponible;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNombre() {
@@ -29,23 +51,35 @@ public class Producto {
         return marca;
     }
 
-    public double getPrecio() {
-        return precio;
-    }
-
-    public int getDescuento() {
-        return descuento;
-    }
-
     public String getCategoria() {
         return categoria;
     }
 
-    public boolean isDisponible() {
-        return disponible;
+    public Double getPrecio() {
+        return precio;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public Boolean getDestacado() {
+        return destacado;
+    }
+
+    public Integer getDescuento() {
+        return descuento;
+    }
+
+    public Boolean getDisponible() {
+        return disponible;
     }
 }
