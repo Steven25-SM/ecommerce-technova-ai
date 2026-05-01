@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-04-2026 a las 18:16:25
+-- Tiempo de generación: 01-05-2026 a las 23:46:06
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -83,8 +83,21 @@ CREATE TABLE `usuario` (
   `id` bigint(20) NOT NULL,
   `correo` varchar(255) DEFAULT NULL,
   `nombre` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
+  `password` varchar(255) DEFAULT NULL,
+  `apellidos` varchar(255) DEFAULT NULL,
+  `dni` varchar(255) DEFAULT NULL,
+  `fecha_nacimiento` varchar(255) DEFAULT NULL,
+  `rol` varchar(255) DEFAULT NULL,
+  `telefono` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `correo`, `nombre`, `password`, `apellidos`, `dni`, `fecha_nacimiento`, `rol`, `telefono`) VALUES
+(1, 'josue@gmail.com', 'Josue', '123456', 'Hernandez', '12345678', '2000-05-15', 'CLIENTE', '999888777'),
+(2, 'steven@gmail.com', 'Steven', '01234567', 'Saldaña ', '78023472', '2004-06-06', 'CLIENTE', '934872435');
 
 --
 -- Índices para tablas volcadas
@@ -116,7 +129,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
