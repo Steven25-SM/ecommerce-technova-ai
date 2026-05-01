@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: black;
+  color: white;
+  border-bottom: 2px solid #01edf5;
+}
+
+.header__logo {
+  color: white;
+  margin: 0;
+}
+
+.header__acciones {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header__bienvenida {
+  color: #01edf5;
+  font-weight: 600;
+}
+
+.header__btn {
+  background-color: #01edf5;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: Arial;
+}
+
+.header__btn:hover {
+  background-color: #00d4db;
+}

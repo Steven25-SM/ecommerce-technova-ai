@@ -1,0 +1,27 @@
+.hero {
+  height: 90vh;
+  background-image: url('/images/hero-section.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__titulo {
+  color: white;
+  font-size: 48px;
+  padding: 0 40px;
+}

@@ -1,19 +1,42 @@
-import Header from "./Header";
-import Hero from "./Hero";
-import Catalogo from "./Catalogo";
-import LoginModal from "./LoginModal";
 import { useState } from "react";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import Catalogo from "./components/Catalogo";
+import LoginModal from "./components/LoginModal";
+import RegisterModal from "./components/RegisterModal";
 
 function App() {
-  const [mostrarLogin, setMostrarLogin] = useState(false);
+  const [modalAbierto, setModalAbierto] = useState(null);
+  const [usuario, setUsuario]           = useState(null);
+
+  const handleLoginExitoso = (datosUsuario) => {
+    setUsuario(datosUsuario);
+    setModalAbierto(null);
+  };
 
   return (
     <div>
-      <Header abrirLogin={() => setMostrarLogin(true)} />
+      <Header
+        abrirLogin={() => setModalAbierto("login")}
+        usuario={usuario}
+        cerrarSesion={() => setUsuario(null)}
+      />
       <Hero />
       <Catalogo />
 
-      {mostrarLogin && <LoginModal />}
+      {modalAbierto === "login" && (
+        <LoginModal
+          cerrar={() => setModalAbierto(null)}
+          abrirRegistro={() => setModalAbierto("registro")}
+          onLoginExitoso={handleLoginExitoso}
+        />
+      )}
+      {modalAbierto === "registro" && (
+        <RegisterModal
+          cerrar={() => setModalAbierto(null)}
+          abrirLogin={() => setModalAbierto("login")}
+        />
+      )}
     </div>
   );
 }
