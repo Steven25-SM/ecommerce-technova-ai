@@ -12,7 +12,7 @@ function Catalogo() {
   const [marcas, setMarcas]         = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/productos")
+    fetch("http://localhost:8081/productos")
       .then((res) => res.json())
       .then((data) => {
         setProductos(data);
@@ -30,7 +30,7 @@ function Catalogo() {
     if (precioMax) params.append("precioMax", precioMax);
 
     setCargando(true);
-    fetch(`http://localhost:8080/productos/filtrar?${params}`)
+    fetch(`http://localhost:8081/productos/filtrar?${params}`)
       .then((res) => res.json())
       .then((data) => { setProductos(data); setCargando(false); });
   };
@@ -38,7 +38,7 @@ function Catalogo() {
   const limpiarFiltros = () => {
     setCategoria(""); setMarca(""); setPrecioMin(""); setPrecioMax("");
     setCargando(true);
-    fetch("http://localhost:8080/productos")
+    fetch("http://localhost:8081/productos")
       .then((res) => res.json())
       .then((data) => { setProductos(data); setCargando(false); });
   };

@@ -2,39 +2,38 @@ package org.example.ecommercebackend.controller;
 
 import org.example.ecommercebackend.model.Producto;
 import org.example.ecommercebackend.repository.ProductoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/productos")
-@CrossOrigin(origins = "*")
 public class ProductoController {
 
-    private final ProductoRepository repository;
+    @Autowired
+    private ProductoRepository productoRepository;
 
-    public ProductoController(ProductoRepository repository) {
-        this.repository = repository;
-    }
-
-    // GET /productos — devuelve todos (solo los disponibles)
-    @GetMapping
+    @GetMapping("/productos")
     public List<Producto> listar() {
-        return repository.findAll()
-                .stream()
-                .filter(p -> Boolean.TRUE.equals(p.getDisponible()))
-                .toList();
+        return productoRepository.findAll();
     }
 
-    // GET /productos/filtrar?categoria=Laptop&marca=Lenovo&precioMin=100&precioMax=2000
-    // Todos los parámetros son opcionales — si no los mandas, no filtra por ese campo
-    @GetMapping("/filtrar")
-    public List<Producto> filtrar(
-            @RequestParam(required = false) String categoria,
-            @RequestParam(required = false) String marca,
-            @RequestParam(required = false) Double precioMin,
-            @RequestParam(required = false) Double precioMax
-    ) {
-        return repository.filtrar(categoria, marca, precioMin, precioMax);
+    @PostMapping("/productos")
+    public Producto crear(@RequestBody Producto producto) {
+        return productoRepository.save(producto);
+    }
+
+    @PutMapping("/productos/{id}")
+    public Producto actualizar(@PathVariable Long id, @RequestBody Producto producto) {
+        producto.setId(id);
+        return productoRepository.save(producto);
+    }
+
+    @PatchMapping("/productos/{id}/deshabilitar")
+    public Producto deshabilitar(@PathVariable Long id) {
+        Producto p = productoRepository.findById(id).orElseThrow();
+        p.setDisponible(false);
+        return productoRepository.save(p);
     }
 }

@@ -14,7 +14,7 @@ function LoginModal({ cerrar, abrirRegistro, onLoginExitoso }) {
     setError("");
 
     try {
-      const res  = await fetch("http://localhost:8080/usuarios/login", {
+      const res  = await fetch("http://localhost:8081/usuarios/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ correo, password }),

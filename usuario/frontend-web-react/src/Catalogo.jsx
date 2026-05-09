@@ -4,7 +4,7 @@ function Catalogo() {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/productos")
+    fetch("http://localhost:8081/productos")
       .then((res) => res.json())
       .then((data) => setProductos(data));
   }, []);

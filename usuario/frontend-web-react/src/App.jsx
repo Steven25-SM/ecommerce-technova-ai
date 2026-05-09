@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Catalogo from "./components/Catalogo";
 import LoginModal from "./components/LoginModal";
 import RegisterModal from "./components/RegisterModal";
+import Admin from "./Admin";
 
-function App() {
+function Home() {
   const [modalAbierto, setModalAbierto] = useState(null);
-  const [usuario, setUsuario]           = useState(null);
+  const [usuario, setUsuario] = useState(null);
 
   const handleLoginExitoso = (datosUsuario) => {
     setUsuario(datosUsuario);
@@ -23,7 +25,6 @@ function App() {
       />
       <Hero />
       <Catalogo />
-
       {modalAbierto === "login" && (
         <LoginModal
           cerrar={() => setModalAbierto(null)}
@@ -38,6 +39,17 @@ function App() {
         />
       )}
     </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

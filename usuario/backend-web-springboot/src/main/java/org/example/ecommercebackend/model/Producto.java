@@ -20,66 +20,38 @@ public class Producto {
     private Integer descuento;
     private Boolean disponible;
 
-    public Producto() {
-    }
+    public Producto() {}
 
-    public Producto(String nombre, String marca, String categoria,
-                    Double precio, Integer stock, String descripcion,
-                    String imagenUrl, Boolean destacado,
-                    Integer descuento, Boolean disponible) {
-        this.nombre = nombre;
-        this.marca = marca;
-        this.categoria = categoria;
-        this.precio = precio;
-        this.stock = stock;
-        this.descripcion = descripcion;
-        this.imagenUrl = imagenUrl;
-        this.destacado = destacado;
-        this.descuento = descuento;
-        this.disponible = disponible;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getMarca() { return marca; }
+    public void setMarca(String marca) { this.marca = marca; }
 
-    public String getMarca() {
-        return marca;
-    }
+    public String getCategoria() { return categoria; }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
 
-    public String getCategoria() {
-        return categoria;
-    }
+    public Double getPrecio() { return precio; }
+    public void setPrecio(Double precio) { this.precio = precio; }
 
-    public Double getPrecio() {
-        return precio;
-    }
+    public Integer getStock() { return stock; }
+    public void setStock(Integer stock) { this.stock = stock; }
 
-    public Integer getStock() {
-        return stock;
-    }
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+    public String getImagenUrl() { return imagenUrl; }
+    public void setImagenUrl(String imagenUrl) { this.imagenUrl = imagenUrl; }
 
-    public String getImagenUrl() {
-        return imagenUrl;
-    }
+    public Boolean getDestacado() { return destacado; }
+    public void setDestacado(Boolean destacado) { this.destacado = destacado; }
 
-    public Boolean getDestacado() {
-        return destacado;
-    }
+    public Integer getDescuento() { return descuento; }
+    public void setDescuento(Integer descuento) { this.descuento = descuento; }
 
-    public Integer getDescuento() {
-        return descuento;
-    }
-
-    public Boolean getDisponible() {
-        return disponible;
-    }
+    public Boolean getDisponible() { return disponible; }
+    public void setDisponible(Boolean disponible) { this.disponible = disponible; }
 }
