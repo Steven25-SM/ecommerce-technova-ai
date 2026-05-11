@@ -130,3 +130,37 @@
   font-weight: 700;
   margin-top: 6px;
 }
+
+.producto-card__botones {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.producto-card__btn-carrito {
+  flex: 1;
+  padding: 8px;
+  background: #01edf5;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.producto-card__btn-carrito:hover { background: #00d4db; }
+
+.producto-card__btn-favorito {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.producto-card__btn-favorito:hover { background: #fff0f0; border-color: #f44336; }

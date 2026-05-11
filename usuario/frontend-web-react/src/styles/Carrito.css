@@ -1,0 +1,149 @@
+.carrito__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.carrito__panel {
+  background: white;
+  width: 420px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+}
+
+.carrito__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eee;
+}
+
+.carrito__header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #1a1a2e;
+}
+
+.carrito__cerrar {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+}
+
+.carrito__vacio {
+  text-align: center;
+  color: #888;
+  padding: 40px 20px;
+  font-size: 16px;
+}
+
+.carrito__items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.carrito__item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+
+.carrito__item-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.carrito__item-info {
+  flex: 1;
+}
+
+.carrito__item-nombre {
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.carrito__item-precio {
+  color: #01edf5;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.carrito__item-controles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.carrito__item-controles button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrito__item-controles button:hover {
+  background: #f0fdfe;
+  border-color: #01edf5;
+}
+
+.carrito__item-eliminar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.carrito__footer {
+  padding: 20px 24px;
+  border-top: 1px solid #eee;
+}
+
+.carrito__total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #1a1a2e;
+}
+
+.carrito__checkout {
+  width: 100%;
+  padding: 14px;
+  background: #01edf5;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #1a1a2e;
+}
+
+.carrito__checkout:hover {
+  background: #00d4db;
+}

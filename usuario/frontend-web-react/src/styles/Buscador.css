@@ -1,0 +1,105 @@
+.buscador {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.buscador__campo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.buscador__input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.buscador__input:focus {
+  border-color: #01edf5;
+}
+
+.buscador__limpiar {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  font-size: 16px;
+}
+
+.buscador__spinner {
+  position: absolute;
+  right: 35px;
+  font-size: 14px;
+}
+
+.buscador__sugerencias {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  list-style: none;
+  padding: 8px 0;
+  margin: 4px 0 0;
+  z-index: 999;
+}
+
+.buscador__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  cursor: pointer;
+  gap: 10px;
+  transition: background 0.15s;
+}
+
+.buscador__item:hover {
+  background-color: #f0fdfe;
+}
+
+.buscador__item-nombre {
+  font-weight: 600;
+  color: #1a1a2e;
+  flex: 1;
+}
+
+.buscador__item-marca {
+  color: #888;
+  font-size: 13px;
+}
+
+.buscador__item-precio {
+  color: #01edf5;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.buscador__vacio {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  z-index: 999;
+  margin-top: 4px;
+}

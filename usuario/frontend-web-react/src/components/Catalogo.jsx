@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import "../styles/Catalogo.css";
+import Buscador from "./Buscador";
 
-function Catalogo() {
+function Catalogo({ onAgregarAlCarrito, onToggleFavorito, usuario }) {
   const [productos, setProductos]   = useState([]);
   const [cargando, setCargando]     = useState(true);
   const [categoria, setCategoria]   = useState("");
@@ -10,6 +11,7 @@ function Catalogo() {
   const [precioMax, setPrecioMax]   = useState("");
   const [categorias, setCategorias] = useState([]);
   const [marcas, setMarcas]         = useState([]);
+  const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:8081/productos")
@@ -28,7 +30,6 @@ function Catalogo() {
     if (marca)     params.append("marca", marca);
     if (precioMin) params.append("precioMin", precioMin);
     if (precioMax) params.append("precioMax", precioMax);
-
     setCargando(true);
     fetch(`http://localhost:8081/productos/filtrar?${params}`)
       .then((res) => res.json())
@@ -37,15 +38,31 @@ function Catalogo() {
 
   const limpiarFiltros = () => {
     setCategoria(""); setMarca(""); setPrecioMin(""); setPrecioMax("");
+    setProductoSeleccionado(null);
     setCargando(true);
     fetch("http://localhost:8081/productos")
       .then((res) => res.json())
       .then((data) => { setProductos(data); setCargando(false); });
   };
 
+  // Cuando el buscador selecciona un producto, lo mostramos solo a él
+  const handleBusqueda = (producto) => {
+    if (!producto) { limpiarFiltros(); return; }
+    setProductoSeleccionado(producto);
+    setProductos([producto]);
+    setCargando(false);
+  };
+
+  const productosAMostrar = productoSeleccionado ? [productoSeleccionado] : productos;
+
   return (
     <div className="catalogo">
       <h2 className="catalogo__titulo">Nuestros Productos</h2>
+
+      {/* Buscador inteligente */}
+      <div style={{ marginBottom: "20px" }}>
+        <Buscador onSeleccionar={handleBusqueda} />
+      </div>
 
       <div className="catalogo__filtros">
         <select className="catalogo__select" value={categoria}
@@ -78,13 +95,11 @@ function Catalogo() {
 
       {cargando ? (
         <p>Cargando productos...</p>
-      ) : productos.length === 0 ? (
-        <p className="catalogo__vacio">
-          No se encontraron productos con esos filtros.
-        </p>
+      ) : productosAMostrar.length === 0 ? (
+        <p className="catalogo__vacio">No se encontraron productos con esos filtros.</p>
       ) : (
         <div className="catalogo__grid">
-          {productos.map((producto) => (
+          {productosAMostrar.map((producto) => (
             <div key={producto.id} className="producto-card">
               <img className="producto-card__img"
                 src={producto.imagenUrl} alt={producto.nombre} />
@@ -98,6 +113,17 @@ function Catalogo() {
                     -{producto.descuento}%
                   </span>
                 )}
+                {/* Botones de acción */}
+                <div className="producto-card__botones">
+                  <button className="producto-card__btn-carrito"
+                  onClick={() => onAgregarAlCarrito(producto)}>  {/* ← objeto completo, no solo id */}
+                  🛒 Agregar
+                  </button>
+                  <button className="producto-card__btn-favorito"
+                    onClick={() => onToggleFavorito(producto.id)}>
+                    ❤️
+                  </button>
+                </div>
               </div>
             </div>
           ))}

@@ -15,4 +15,17 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
             @Param("precioMin") Double precioMin,
             @Param("precioMax") Double precioMax
     );
+
+    @Query("""
+    SELECT p FROM Producto p
+    WHERE p.disponible = true
+    AND (
+        LOWER(p.nombre)    LIKE LOWER(CONCAT('%', :q, '%')) OR
+        LOWER(p.marca)     LIKE LOWER(CONCAT('%', :q, '%')) OR
+        LOWER(p.categoria) LIKE LOWER(CONCAT('%', :q, '%'))
+    )
+    ORDER BY
+        CASE WHEN LOWER(p.nombre) LIKE LOWER(CONCAT('%', :q, '%')) THEN 0 ELSE 1 END
+    """)
+    List<Producto> buscar(@Param("q") String q);
 }
